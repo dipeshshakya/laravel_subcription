@@ -34,6 +34,8 @@ class User extends Authenticatable
             $this->attributes['password'] =app('hash')->needsRehash($pass)?Hash::make($pass ):$pass;
         }
 
-
+    }
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
 }
