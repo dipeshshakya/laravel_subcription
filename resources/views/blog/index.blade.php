@@ -6,12 +6,12 @@
             <div class="col-md-8 col-md-offset-2">
                 @foreach ($posts as $post)
 
-                    {{--@hasanyrole('subscriber|super-admin')--}}
-
-                    {{--@else--}}
-                        {{--@if(empty($post->is_premium))--}}
-
-                        {{--@else--}}
+                    @hasanyrole('subscriber|super-admin')
+                    @include('_blog-box')
+                    @else
+                        @if(empty($post->is_premium))
+                            @include('_blog-box')
+                        @else
                             <div class="panel panel-info">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">{{$post->title}}</h3>
@@ -20,8 +20,8 @@
                                     <p><a href="/subscribe">Subscribe Now</a> to view this post</p>
                                 </div>
                             </div>
-                        {{--@endif--}}
-                        {{--@endhasanyrole--}}
+                        @endif
+                        @endhasanyrole
 
                         @endforeach
             </div>

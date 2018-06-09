@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/subscribe', 'SubscriptionController@subscribe')->name('subscribe');
+Route::post('/subscribe', 'SubscriptionController@store');
+//Route::view('subscribe','subscribe');
 
 Route::group(['middleware' => ['role:super-admin','auth']], function () {
 
