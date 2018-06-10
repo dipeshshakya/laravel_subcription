@@ -16,7 +16,7 @@ class SubscriptionController extends Controller
         $token= $request->stripeToken;
 //
 
-        auth()->user()->newSubscription('main', 'monthly')->create($token);
+        auth()->user()->newSubscription('main', 'monthly')->withCoupon($request->coupon)->create($token);
         auth()->user()->assignRole('subscriber');
         return redirect('/blog');
 
