@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\UserSubscribed;
 
 class SubscriptionController extends Controller
 {
@@ -18,6 +19,9 @@ class SubscriptionController extends Controller
 
         auth()->user()->newSubscription('main', 'monthly')->withCoupon($request->coupon)->create($token);
         auth()->user()->assignRole('subscriber');
+
+
+        auth()->user()->notify(new UserSubscribed);
         return redirect('/blog');
 
 
