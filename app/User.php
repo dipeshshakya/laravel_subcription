@@ -6,10 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use Notifiable,HasRoles;
+    use Notifiable,HasRoles,Billable;
 
     /**
      * The attributes that are mass assignable.
