@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Events\Subscriber;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,5 +36,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::view('admin','admin.dashboard');
     Route::resource('admin/posts', 'Admin\\PostsController');
 });
+
+
+Route::get('/event',function(){
+    event(new Subscriber("helloo dipesh"));
+});
+
+
 
 
